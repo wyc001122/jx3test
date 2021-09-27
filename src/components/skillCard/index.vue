@@ -22,7 +22,10 @@
     <div class="content">
       <img :src="getUrl(data.skill_name)">
       <div class="describe">
-        距离20尺，释放：1.5秒，无调息时间。运功1.5秒，对目标造成379-399点（+1.04*攻击力）毒性内功伤害，并使得自身获得1点寒性。
+        {{data.skill_describe}}
+        <div class="secret">
+          <el-tag style="margin-right:10px" type="success" v-for="(item,index) in data.skill_secret" :key="index">{{item}}</el-tag>
+        </div>
       </div>
     </div>
   </el-card>
@@ -61,7 +64,7 @@ export default {
     display: flex;
     align-items: center;
     font-size: 18px;
-    span {
+    & > span {
       margin-right: 5px;
     }
     // font-weight: bold;
@@ -78,6 +81,16 @@ export default {
     }
     .describe {
       text-indent: 2em;
+      width: 100%;
+
+      .secret {
+        text-indent: 0em;
+        display: flex;
+        width: 100%;
+        .el-tab {
+          margin-right: 10px;
+        }
+      }
     }
   }
 }
